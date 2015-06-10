@@ -6,9 +6,12 @@
 	http://esoteric.sange.fi/brainfuck/impl/compilers/BF2Java.java
 */
 use tok::BFToken;
+use std::result;
+use std::io;
+use std::io::{Read, Result};
 
 /// 프로그램이 올바른지 검사한다.
-pub fn check_program( program: &Vec<BFToken> ) -> Result<bool,&str>
+pub fn check_program( program: &Vec<BFToken> ) -> result::Result<bool,&str>
 {
 	if program.len() == 0
 	{
@@ -61,7 +64,11 @@ pub fn exec( program: &Vec<BFToken> )
 			},
 			BFToken::PPrev =>
 			{
-				pointer -= 1;
+				if pointer != 0 {
+					pointer -= 1;
+				} else {
+					panic!("PC Underflow!");
+				}
 			},
 			BFToken::VAdd1 =>
 			{
@@ -77,7 +84,11 @@ pub fn exec( program: &Vec<BFToken> )
 			},
 			BFToken::VRead =>
 			{
-				println!("VRead: unimplemented.");
+				let mut buf: [u8;1] = [0];
+				match io::stdin().take(1).read(&mut buf) {
+					Ok(n) if n == 1 => mem[pointer] = buf[0],
+					_ => (),
+				}
 			},
 			BFToken::LBeg =>
 			{
