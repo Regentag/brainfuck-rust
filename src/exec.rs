@@ -67,7 +67,7 @@ pub fn exec( program: &Vec<BFToken> )
 				if pointer != 0 {
 					pointer -= 1;
 				} else {
-					panic!("PC Underflow!");
+					panic!("Mem Pointer Underflow!");
 				}
 			},
 			BFToken::VAdd1 =>
