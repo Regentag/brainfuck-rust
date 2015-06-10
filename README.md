@@ -25,6 +25,9 @@ Brainfuck-Rust는 현재 세가지 언어의 실행을 지원합니다:
 	 https://github.com/masarakki/nyaruko_lang
 
   
-Brainfuck-Rust는 현재 Hello, World!를 정상적으로 실행하며,
-사용자의 입력을 받는 명령(,)은 아직 구현되지 않았습니다.
-곧 추가될 예정입니다.
+Brainfuck-Rust는 현재 Hello, World!와 Echo를 실행 가능합니다.
+(다른 Brainfuck 코드들은 아직 테스트 되지 않았습니다.)
+
+Update 2015-06-10
+  * [foriequal0](https://github.com/foriequal0)님께서 Stdin으로부터 사용자의
+	입력을 받는 기능을 구현해 주셨습니다.
