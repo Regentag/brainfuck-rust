@@ -31,3 +31,7 @@ Brainfuck-Rust는 현재 Hello, World!와 Echo를 실행 가능합니다.
 Update 2015-06-10
   * [foriequal0](https://github.com/foriequal0)님께서 Stdin으로부터 사용자의
 	입력을 받는 기능을 구현해 주셨습니다.
+
+TODO:
+ * Parser 개선하기(...)
+ * Stdin 대신 미리 주어진 입력값으로 실행할 수 있도록 하는 기능 추가(Web Interpreter 처럼).
