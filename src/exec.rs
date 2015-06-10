@@ -6,11 +6,12 @@
 	http://esoteric.sange.fi/brainfuck/impl/compilers/BF2Java.java
 */
 use tok::BFToken;
+use std::result;
 use std::io;
-use std::io::Read;
+use std::io::{Read, Result};
 
 /// 프로그램이 올바른지 검사한다.
-pub fn check_program( program: &Vec<BFToken> ) -> Result<bool,&str>
+pub fn check_program( program: &Vec<BFToken> ) -> result::Result<bool,&str>
 {
 	if program.len() == 0
 	{
@@ -80,8 +81,10 @@ pub fn exec( program: &Vec<BFToken> )
 			BFToken::VRead =>
 			{
 				let mut buf: [u8;1] = [0];
-				assert!(io::stdin().take(1).read(&mut buf).unwrap() == 1);
-				mem[pointer] = buf[0];
+				match io::stdin().take(1).read(&mut buf) {
+					Ok(n) if n == 1 => mem[pointer] = buf[0],
+					_ => (),
+				}
 			},
 			BFToken::LBeg =>
 			{
