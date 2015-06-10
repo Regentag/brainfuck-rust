@@ -64,7 +64,11 @@ pub fn exec( program: &Vec<BFToken> )
 			},
 			BFToken::PPrev =>
 			{
-				pointer -= 1;
+				if pointer != 0 {
+					pointer -= 1;
+				} else {
+					panic!("PC Underflow!");
+				}
 			},
 			BFToken::VAdd1 =>
 			{
