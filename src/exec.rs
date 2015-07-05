@@ -11,7 +11,7 @@ use std::io;
 use std::io::{Read, Result};
 
 /// 프로그램이 올바른지 검사한다.
-pub fn check_program( program: &Vec<BFToken> ) -> result::Result<bool,&str>
+pub fn check_program( program: &Vec<BFToken> ) -> result::Result<(),&str>
 {
 	if program.len() == 0
 	{
@@ -31,7 +31,7 @@ pub fn check_program( program: &Vec<BFToken> ) -> result::Result<bool,&str>
 
 	if loop_check == 0
 	{
-		Ok(true)
+		Ok(())
 	}
 	else
 	{
