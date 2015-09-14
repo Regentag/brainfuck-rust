@@ -10,41 +10,20 @@ mod exec;
 fn main() {
 	let args : Vec<_> = env::args().collect();
 	let mut code_file: &str;
-	let mut tok_table: &str = "brainfuck";
 
 	if args.len() == 2
 	{
 		code_file = &args[1][..];
 	}
-	else if args.len() == 3
-	{
-		tok_table = &args[1][..];
-		code_file = &args[2][..];
-	}
 	else
 	{
 		println!( "error: Invalid arguments." );
-		println!( "usage bf [language] [code file]" );
-		println!( "" );
-		println!( "Languages:" );
-		println!( "  brainfuck : Brainfuck (default)" );
-		println!( "  ook       : Ook!" );
-		println!( "  nyaruko   : Nyaruko" );
+		println!( "usage bf [code file]" );
 
 		return;
 	}
 
-	let tt = match tok_table
-	{
-		"brainfuck" => default_ttable(),
-		"ook"       => ook_ttable(),
-		"nyaruko"   => nyaruko_ttable(),
-		_ =>
-		{
-			println!( "Invalid language!" );
-			return;
-		}
-	};
+	let tt = default_ttable();
 
 	let code = load_code( &code_file );
 	if code.is_ok()

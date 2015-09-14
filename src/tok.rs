@@ -32,40 +32,6 @@ pub fn default_ttable() -> HashMap<&'static str,BFToken>
 	ttable
 }
 
-/// Ook! language
-/// http://esolangs.org/wiki/ook!
-pub fn ook_ttable() -> HashMap<&'static str,BFToken>
-{
-	let mut ttable = HashMap::new();
-	ttable.insert( "Ook. Ook? ", BFToken::PNext );
-	ttable.insert( "Ook? Ook. ", BFToken::PPrev );
-	ttable.insert( "Ook. Ook. ", BFToken::VAdd1 );
-	ttable.insert( "Ook! Ook! ", BFToken::VSub1 );
-	ttable.insert( "Ook! Ook. ", BFToken::VWrit );
-	ttable.insert( "Ook. Ook! ", BFToken::VRead );
-	ttable.insert( "Ook! Ook? ", BFToken::LBeg );
-	ttable.insert( "Ook? Ook! ", BFToken::LEnd );
-
-	ttable
-}
-
-/// Nyaruko language
-/// https://github.com/masarakki/nyaruko_lang
-pub fn nyaruko_ttable() -> HashMap<&'static str,BFToken>
-{
-	let mut ttable = HashMap::new();
-	ttable.insert( "(」・ω・)」うー(／・ω・)／にゃー", BFToken::PNext );
-	ttable.insert( "(」・ω・)」うー!!(／・ω・)／にゃー!!", BFToken::PPrev );
-	ttable.insert( "(」・ω・)」うー!(／・ω・)／にゃー!", BFToken::VAdd1 );
-	ttable.insert( "(」・ω・)」うー!!!(／・ω・)／にゃー!!!", BFToken::VSub1 );
-	ttable.insert( "Let's＼(・ω・)／にゃー", BFToken::VWrit );
-	ttable.insert( "cosmic!", BFToken::VRead );
-	ttable.insert( "CHAOS☆CHAOS!", BFToken::LBeg );
-	ttable.insert( "I WANNA CHAOS!", BFToken::LEnd );
-
-	ttable
-}
-
 /// 토큰에 사용되는 문자들의 집합을 생성한다.
 fn token_chars( ttable: &HashMap<&str,BFToken> ) -> HashSet<char>
 {
