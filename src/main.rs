@@ -9,7 +9,7 @@ mod exec;
 
 fn main() {
 	let args : Vec<_> = env::args().collect();
-	let mut code_file: &str;
+	let code_file: &str;
 
 	if args.len() == 2
 	{
